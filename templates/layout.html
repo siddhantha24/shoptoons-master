@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel = "icon" href = 
+"\static\images\wlogo@300x.png" 
+        type = "image/x-icon">
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+</head>
+<body style="font-family: sans-serif;">
+
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+	<br>
+	<br>
+<div id="title">
+
+    <a href="http://127.0.0.1:5000/"><img src="static\images\black300x.png" alt="" style="width: 300px; height:auto">	</a>
+	<form style="background-color:#000000; border-radius: 10px;">
+		<a href="http://127.0.0.1:5000/"><img src="static\images\wlogo@300x.png" alt="" style="width: 65px; height:auto; float: left; padding: 29px 0px 0px 15px;"></a>
+		<input id="searchBox" type="text" name="searchQuery">
+		<input id="searchButton" type="submit" value="Search">
+	</form>
+
+	{% if not loggedIn %}
+
+
+		<div class="dropdown" style="margin: -75px 997px; width: 500px;">
+			<a style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #fbfdff; text-decoration: none;" href='http://localhost:8080/06-Login-Auth/flaskblog/contact/index.php' class="dropbtn">Contact Us</a>
+				</div>
+				<div class="dropdown" style="margin: -75px 1125px; width: 500px;">
+					<a href="/about" style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff; text-decoration: none;" class="dropbtn">About Us</a>
+						</div>
+						<div class="dropdown" style="margin: -75px 895px; width: 500px;">
+							<a href="/loginForm" style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff; text-decoration: none;" class="dropbtn">SignIn</a>
+								</div>
+						<div class="dropdown" style="margin: -95px 90px; ">
+							<button style="color: rgb(36, 36, 36); border-radius: 100px; background-color: #ffffff; height: 50px; width: 50px; " class="dropbtn"><i class="fa fa-solid fa-bars" style="font-size:18px;"></i></button>
+							<div class="dropdown-content">
+								<a href="#">SELL YOUR MERCH</a>
+								<a href="#">COUPONS</a>
+											<a href="#">DELIVERY INFORMATION</a>
+								<a href="#">PAYMENT INFORMATION</a>
+							</div>
+						</div>
+	{% else %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<div class="dropdown" style="margin: -95px 90px; ">
+		<button style="color: rgb(36, 36, 36); border-radius: 100px; background-color: #ffffff; height: 50px; width: 50px; " class="dropbtn"><i class="fa fa-solid fa-bars" style="font-size:18px;"></i></button>
+		<div class="dropdown-content">
+			<a href="#">SELL YOUR MERCH</a>
+			<a href="#">COUPONS</a>
+						<a href="#">DELIVERY INFORMATION</a>
+			<a href="#">PAYMENT INFORMATION</a>
+		</div>
+	</div>
+	<div class="dropdown" style="margin: -100px 900px; ">
+		<button style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff;" class="dropbtn">Hello, <br>{{firstName}}</button>
+		<div class="dropdown-content">
+			<a href="/account/orders">Your orders</a>
+			<a href="/account">Your profile</a>
+			<hr>
+			<a href="/logout">Sign Out</a>
+		</div>
+	</div>
+	<div class="dropdown" style="margin: -75px 997px; width: 500px;">
+		<a style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #fbfdff; text-decoration: none;" href='http://localhost:8080/06-Login-Auth/flaskblog/contact/index.php' class="dropbtn">Contact Us</a>
+			</div>
+			<div class="dropdown" style="margin: -75px 1125px; width: 500px;">
+				<a href="/about" style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff; text-decoration: none;" class="dropbtn">About Us</a>
+					</div>
+
+	{% endif %}
+	<div class="navbar-right" style="margin: -70px 100px;" style="background-color: rgb(158, 127, 127);">
+		<a style="color: #777777;  color: white;  font-size: 18px;" href='/cart' id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">{{noOfItems}}</span></a>
+</div>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+.navbar-right {
+    float: right;
+  }
+ .navbar-right a {
+        color: #777777;
+        text-decoration: none;
+  }
+ 
+
+.badge {
+  background-color: #6394F8;
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+	</style>
+
+    </html>
+    </body>

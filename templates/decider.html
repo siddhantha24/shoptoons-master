@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>decider</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+ 
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .btn {
+  position: absolute;
+  top: 89%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: rgb(113, 164, 241);
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #04AA6D
+  text-align: center;
+  transition: 0.5s ease;
+}
+
+.container .btn:hover {
+  background-color: rgb(39, 223, 54);
+}
+/**container1**/
+.container1 {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+}
+.container1 img {
+  width: 100%;
+  height: auto;
+}
+.container1 .btn1 {
+  position: absolute;
+  top: 89%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: rgb(113, 164, 241);
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #04AA6D
+  text-align: center;
+  transition: 0.5s ease;
+}
+.container1 .btn1:hover{
+  background-color: rgb(39, 223, 54);
+}
+</style>
+</head>
+<body style="background-color: rgb(30, 30, 31);">
+	
+	<hr>
+<h1 style="font-family:'calibri';color:rgb(255, 255, 255);text-align: center;font: size 200px;">Who are you? 
+<img src=""style="width:10%;position: relative;left: -200px;"> </h1>
+<hr>
+<div class="container" style="position: relative;left:280px;top: 120px;">
+	<img src="{{ url_for('static', filename='images/one.jpg') }}" style="border-radius: 20px;left: 20px;">
+<a href="/sellerloginForm"style="width:80%;position: relative;left:-200px;top: 40px"><button class="btn">seller</button></a>
+</div>
+	<div class="container1" style="position: relative;top: -150px; left: 850px;">
+	<img src="{{ url_for('static', filename='images/two.jpg') }}" style="border-radius: 20px;">
+<a href="/loginForm" style="width:80%;position: relative;left:-200px;top: 40px;"><button class="btn1">customer</button></a>
+	</div>
+</body>
+</html>

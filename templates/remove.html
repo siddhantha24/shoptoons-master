@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>SHOPTOONS</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href={{ url_for('static', filename='images/favicon.ico') }} type="image/x-icon">
+    <link rel="apple-touch-icon" href={{ url_for('static', filename='images/apple-touch-icon.png') }}>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/bootstrap.min.css') }} />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }} />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/responsive.css') }} />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/custom.css') }} />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<head>
+<title>Welcome to Seller Dashboard</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+		<div class="container">
+			<!-- Start Header Navigation -->
+			<div class="navbar-header">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa fa-bars"></i>
+			</button>
+			<a class="navbar-brand" href="seller"><img src={{ url_for('static', filename='images/bl.png') }} alt="" style="width:200px;padding-right:-20px;border-radius: 20px;"></a>
+            </div>
+			<!-- End Header Navigation -->
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbar-menu">
+				<ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+					<li class="nav-item "><a class="nav-link" href="/seller">Seller Dashboard</a></li>
+					<li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
+					<li class="nav-item "><a class="nav-link" href="/add">Add an Item</a></li>
+										   <li class="nav-item"><a class="nav-link" href="http://localhost/contact/index.php">Contact Us</a></li>
+										   <li class="nav-item active"><a class="nav-link" href="/remove">Your Products</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+
+			<!-- Start Atribute Navigation 
+			<div class="attr-nav">
+				<ul>
+					<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+					<li class="side-menu"><a href="#">
+					<i class="fa fa-shopping-bag"></i>
+						<span class="badge">3</span>
+				</a></li>
+				</ul>
+			</div>   -->
+			{% if not loggedIn %}
+			<div class="attr-nav">
+				<ul><div id="signInButton">
+				<a class="link" href="/loginForm"><b>Sign In</b></a>
+			</div></ul>
+			{% else %}
+			<div class="dropdown">
+	    	<button class="btn hvr-hover" style="color: white;" onclick="window.location.href='/account/profile'"><b>Hello, {{firstName}}</b></button>
+		<!-- <div class="dropdown-content">
+			<a href="/account/orders">Orders</a>
+			<a href="/account/profile">Settings</a>  -->
+			
+			
+		</div>
+	</div>
+	<ul>		<a href="/logout"><b>Sign Out</b></a></ul>
+</div>
+	{% endif %}
+			</nav>
+			
+			
+<!-- <div id="title">
+
+	<form>
+		<input id="searchBox" type="text" name="searchQuery">
+		<input id="searchButton" type="submit" value="Search">
+	</form>
+	
+
+
+	
+	<div id="kart">
+		<a class="link"  href="/cart">
+			<img src={{url_for('static', filename='images/shoppingCart.png')}} id="cartIcon" />
+			CART {{noOfItems}}
+		</a>
+	</div>
+</div>
+-->	
+    <!-- Start Cart  -->
+	<div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Cart</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/remove">Your Merchandise</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <head>
+		<title>Remove</title>
+		
+		</head>
+		<body>
+		<table class="tb">
+			
+			{% for i in range(6) %}
+			<tr>
+				{% for row in data %}
+				<td>
+					{% if i == 4 %}
+					<a href="/removeItem?productId={{row[0]}}" class="btn hvr-hover" style="color: wheat;">
+						remove
+						</a>	
+					<img style="height: 100px; width: auto;" src={{ url_for('static', filename='uploads/' + row[i]) }} id="itemImage" />
+					{% else %}
+					<span style="font-family: 'Montserrat', sans-serif;">	{{row[i]}}</span>
+					{% endif %}
+					
+
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+		<style>
+			
+		</style>
+		<style>
+			Result Skip Results Iframe
+EDIT ON
+table {
+  text-align: left;
+  position: relative;
+  border-collapse: collapse; 
+  background-color: #f6f6f6;
+}/* Spacing */
+td, th {
+  border: 1px solid rgb(13, 14, 13)
+}
+th {
+  background: #ffc107;
+  color: white;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+}
+
+tfoot > tr  {
+  background: black;
+  color: white;
+}
+tbody > tr:hover {
+  background-color: #ffc107;
+}
+		  </style>
+    <!-- End Cart -->
+
+    <!-- Start Instagram Feed  -->
+    <div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-01.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-02.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-03.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-04.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-06.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-07.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-08.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-09.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Instagram Feed  -->
+
+
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>About ThewayShop</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Our Sitemap</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contact Us</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#">Shoptoons</a> Design By :
+            <a href="https://github.com/Jotaro2401/shoptoons">ATHARVA, ANTARA, JANVI & SIDDHANTA</a></p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="js/jquery.superslides.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/inewsticker.js"></script>
+    <script src="js/bootsnav.js."></script>
+    <script src="js/images-loded.min.js"></script>
+    <script src="js/isotope.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/baguetteBox.min.js"></script>
+    <script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta charset="UTF-8">
+<title>Welcome</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<style>
+
+
+
+    .carousel1
+    {
+		position: relative;
+		top: 30px;
+    }
+
+    .carousel1-cell
+    {
+        width: 120px;
+        height: 100px;
+        margin-right: 10px;
+        background: none;
+        border-radius: 10px;
+        counter-increment: carousel1-cell;
+		box-shadow: black;
+    }
+
+    .carousel1-cell:before{
+        display: block;
+        text-align: center;
+        list-style: 200px;
+        font-size: 80px ;
+    }
+
+.carousel
+    {
+		position: relative;
+		top: -36px;
+    }
+
+    .carousel-cell
+    {
+        width: 100%;
+        height: 400px;
+        margin-right: 10px;
+        background: red ;
+        counter-increment: carousel-cell;
+		box-shadow: black;
+    }
+
+    .carousel-cell:before{
+        display: block;
+        text-align: center;
+        list-style: 200px;
+        font-size: 80px ;
+    }
+
+
+</style>
+
+</head>
+<body style="max-width: none;font-family:Comic Sans MS,Comic Sans, cursive;">
+<div id="title" style="background-color:#1b1c1b;display: flex;">
+	<a href="/anime">
+		<img id="logo" src= {{ url_for('static', filename='images/shoptoon.png') }} style="" />
+	</a>
+	<form>
+		<input id="searchBox" type="text" name="searchQuery" style="
+		width: 700px;
+		position: relative;
+		left:100px;
+		border-radius:5px; 
+		background-color:#c9c4c3;
+		border: 2px solid black;
+		height: 25px;
+		">
+		<input id="searchButton" type="submit" value="Search" style="
+		position: relative;
+		left:100px;
+		top: 3px;
+		font-family:Comic Sans MS,Comic Sans, cursive;
+		font-size: 20px;
+		height: 40px;
+		margin-top: 13px;
+		margin-bottom: 20px;
+		margin-right: 20px;
+		float: left;
+		padding-top:none;
+		background-color: black;
+		color: white;
+		border: 2px solid white;
+		border-radius: 10px;
+		">
+	</form>
+
+	{% if not loggedIn %}
+	<div id="signInButton" style="
+		position: relative;
+		left:90px;
+		top: -4px;
+		">
+		<a class="link" href="/decider" style="text-decoration:none;color:white;font-size:25px;">Sign In</a>
+	</div>
+	{% else %}
+	<div class="dropdown" style="
+	position: relative;
+	left:100px;
+	font-family:Comic Sans MS,Comic Sans, cursive;
+	">
+		<a href="/account/profile"><button class="dropbtn" style="
+		font-family:Comic Sans MS,Comic Sans, cursive;font-size: 20px;">Hello, <br>{{firstName}}</button></a>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	{% endif %}
+	<div id="kart" style="
+	position: relative;
+	left:90px;
+	text-decoration: none;
+	font-size:22px;
+	">
+		<a class="link" href="/cart" style="text-decoration: none;color: white;top: -5px;position: relative;float:right;">
+			<img src={{url_for('static', filename='images/shoppingCart.png')}} id="cartIcon" style="position: relative;left:-5px;top: 2px;" />
+			CART {{noOfItems}}
+		</a>
+	</div>
+</div>
+
+<section style="position: relative;height: 10vh;">
+<div class="carousel1" data-flickity='{ "wrapAround": true, "autoPlay" : true, "interval" : 5}'>
+	<div class="carousel1-cell"><a href="/productDescription?productId=1"><img src={{ url_for('static', filename='images/1.png') }} style="width: 65px;height: 50px ;"></a></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/2.png') }} style="width: 85px;height: 30px ;position: relative;top: 10px;left: -10px"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/3.png') }} style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/4.png') }} style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/5.png') }} style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/6.png') }} style="width: 65px;height: 50px ;border-radius: 10px;"></div>      
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/7.png') }} style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/8.png') }} style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/9.png') }} style="width: 65px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/10.png') }} style="width: 65px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/11.png') }} style="width: 95px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/12.png') }} style="width: 105px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/13.png') }} style="width: 125px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/14.png') }} style="width: 125px;height: 120px ;position: relative;top: -35px;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/15.png') }} style="width: 155px;height: 100px ;position: relative;top: -20px;left: -20px;"></div>
+	<div class="carousel1-cell"><img src={{ url_for('static', filename='images/16.png') }} style="width: 65px;height: 50px ;"></div>
+</div>
+<br>
+<br>
+<br>
+
+
+<section style="position: relative;height: 100vh;">
+<div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay" : true, "interval" : 5}'>
+	<div class="carousel-cell"><a href="productDescription?productId=15"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 15px;"></a></div>
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 10px;"></div>
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 10px;"></div>
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 10px;"></div>
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 10px;"></div>
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 10px;"></div>       
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 10px;"></div>
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;border-radius: 10px;"></div>
+	<div class="carousel-cell"><img src={{ url_for('static', filename='images/zerotwo.jpg') }} style="width: 665px;height: 500px ;"></div>
+</div>
+</section>
+<p style="font-size: 70px;position: relative;top: -350px;padding-left: 240px;">FEATURED CATEGORIES</p>
+<table style="position: relative;top: -430px;padding-left: 25px;">
+	<tr>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>	
+	</tr>
+	<tr>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>	
+	</tr>
+	<tr>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>
+		<td><img src={{ url_for('static', filename='images/box1.jpg') }} style="width: 400px;"></td>	
+	</tr>
+</table>
+
+<!--
+<div class="display">
+	<div style="position: relative;text-align: left; top: -150px;">
+		<h2 class="cat" style="position: relative; text-align: center;">What are you looking for?</h2>
+		<table>
+				{% for row in categoryData %}
+				<th>
+					<a href="/displayCategory?categoryId={{row[0]}}">
+					<td style="text-decoration: none;
+				font-size: 15px;
+				background: red;
+				position: relative;
+				text-align: center;
+				color: white;
+				width: 500px;
+  				height: 100px;
+  				border: 3px solid black ;
+				">
+					&nbsp&nbsp&nbsp&nbsp {{row[1]}} &nbsp&nbsp&nbsp&nbsp<br>
+					</td>
+					</a>
+				</th>
+				{% endfor %}
+		</table>	
+	</div>
+	<div>
+		<div> 
+		{% for data in itemData %}
+		<table>
+			<tr id="productName">
+				{% for row in data %}
+				<td>
+					{{row[1]}}
+				</td>
+				{% endfor %}
+			</tr>
+			<tr id="productImage">
+				{% for row in data %}
+				<td>
+					<a href="/productDescription?productId={{row[0]}}">
+						<img src={{ url_for('static', filename='uploads/' + row[4]) }} id="itemImage" />
+					</a>
+				</td>
+				{% endfor %}
+			</tr>
+			<tr id="productPrice">
+				{% for row in data %}
+				<td>
+					${{row[2]}}
+				</td>
+				{% endfor %}
+			</tr>
+		</table>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+-->
+
+</body>
+</html>
+

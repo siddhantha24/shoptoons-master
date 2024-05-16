@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>SHOPTOONS</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href={{ url_for('static', filename='images/favicon.ico') }} type="image/x-icon">
+    <link rel="apple-touch-icon" href={{ url_for('static', filename='images/apple-touch-icon.png') }}>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/bootstrap.min.css') }} />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }} />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/responsive.css') }} />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/custom.css') }} />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<head>
+<title>Welcome to Seller Dashboard</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+		<div class="container">
+			<!-- Start Header Navigation -->
+			<div class="navbar-header">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa fa-bars"></i>
+			</button>
+			<a class="navbar-brand" href="index.html"><img src={{ url_for('static', filename='images/bl.png') }} alt="" style="width:200px;padding-right:-20px;border-radius: 20px;"></a>
+                </div>
+			<!-- End Header Navigation -->
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbar-menu">
+				<ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+					<li class="nav-item "><a class="nav-link" href="/seller">Seller Dashboard</a></li>
+					<li class="nav-item "><a class="nav-link" href="/aboutus">About Us</a></li>
+					<li class="nav-item active"><a class="nav-link" href="/add">Add an Item</a></li>
+										   <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+										   <li class="nav-item"><a class="nav-link" href="/remove">Your Products</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+
+			<!-- Start Atribute Navigation 
+			<div class="attr-nav">
+				<ul>
+					<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+					<li class="side-menu"><a href="#">
+					<i class="fa fa-shopping-bag"></i>
+						<span class="badge">3</span>
+				</a></li>
+				</ul>
+			</div>   -->
+			{% if not loggedIn %}
+			<div class="attr-nav">
+				<ul><div id="signInButton">
+				<a class="link" href="/loginForm"><b>Sign In</b></a>
+			</div></ul>
+			{% else %}
+			<div class="dropdown">
+	    	<button class="btn hvr-hover" style="color: white;" onclick="window.location.href='/account/profile'"><b>Hello, {{firstName}}</b></button>
+		<!-- <div class="dropdown-content">
+			<a href="/account/orders">Orders</a>
+			<a href="/account/profile">Settings</a>  -->
+			
+			
+		</div>
+	</div>
+	<ul>		<li class="nav-item "><a class="nav-link" href="/logout">About Us</a></li>
+	{% endif %}
+			</nav>
+			
+                <!-- End Atribute Navigation -->
+			</div>
+		</div>
+				<br>
+				<br>
+<h2 style="text-align: center;"><b>ADD ITEMS</b></h2>
+<form action="/addItem" method="POST" enctype="multipart/form-data">
+	Name: <input class="input" type="text" name="name"><br>
+	Price: <input class="input" type="text" name="price"><br>
+	Description:  <textarea class="input" name="description" rows=3 cols="40"></textarea><br>
+	Image: <input class="btn hvr-hover"   type="file" name="image"><br>
+	Stock: <input class="input" type="text" name="stock"><br>
+	Category: <select name="category">
+		{% for row in categories %}
+			<option value="{{row[0]}}">{{row[1]}}</option>
+		{% endfor %}
+	</select>
+    Main: <select name="main" style="width: 100px">
+		{% for row in main %}
+			<option value="{{row[0]}}">{{row[1]}}</option>
+		{% endfor %}
+	</select><br>
+	<br><input class="btn hvr-hover" type="submit">
+</form>
+
+<style>
+	 form {
+  background-color: #000000fa;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 550px;
+  padding: 20px;
+  width: 690px;
+  margin: 20px 400px;
+  position: relative;
+  color: white;
+  
+  }
+	
+.input{
+	    width: 500px;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    color: rgb(63, 63, 63);
+    outline: none;
+}
+</style>
+
+
+</body>
+</html>
+

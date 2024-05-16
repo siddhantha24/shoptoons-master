@@ -1,0 +1,696 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta charset="UTF-8">
+<title>Welcome</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }} />
+<link rel="stylesheet" href={{ url_for('static', filename='css/topStyle.css') }} />
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<style>
+
+
+
+    .carousel1
+    {
+		position: relative;
+		top: 30px;
+    }
+
+    .carousel1-cell
+    {
+        width: 120px;
+        height: 100px;
+        margin-right: 10px;
+        background: none;
+        border-radius: 10px;
+        counter-increment: carousel1-cell;
+		box-shadow: black;
+    }
+
+    .carousel1-cell:before{
+        display: block;
+        text-align: center;
+        list-style: 200px;
+        font-size: 80px ;
+    }
+
+.carousel
+    {
+		position: relative;
+		top: -36px;
+    }
+
+    .carousel-cell
+    {
+        width: 100%;
+        height: 400px;
+        margin-right: 10px;
+        background: red ;
+        counter-increment: carousel-cell;
+		box-shadow: black;
+    }
+
+    .carousel-cell:before{
+        display: block;
+        text-align: center;
+        list-style: 200px;
+        font-size: 80px ;
+    }
+
+
+</style>
+
+</head>
+<body style="font-family:Comic Sans MS,Comic Sans, cursive;">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+	
+<div id="title">
+<a href="http://127.0.0.1:5000/" style="margin: 0px 10px;position: relative;top: -15px;"><img margin: 0px 10px src="static\images\wlogo@300x.png" alt="" style="width: 65px; height:auto; float: left; padding: 29px 0px 0px 15px;"></a>
+    
+	<form style="background-color:#000000; border-radius: 10px; ">
+		
+		<input id="searchBox" type="text" name="searchQuery" style="width: 500px;border-radius: 10px;">
+		<input id="searchButton" type="submit" value="Search" style="border-radius: 20px;width: 80px;height: 40px;position: relative;top: -5px;">
+	</form>
+
+	{% if not loggedIn %}
+
+	<div style="position: relative;left: -100px;top: 20px;">
+		<div class="dropdown" style="margin: -75px 997px; width: 500px;">
+			<a style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #fbfdff; text-decoration: none;" href='http://localhost:8080/contact/index.php' class="dropbtn">Contact Us</a>
+		</div>
+		<div class="dropdown" style="margin: -75px 1125px; width: 500px;">
+					<a href="/about" style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff; text-decoration: none;" class="dropbtn">About Us</a>
+		</div>
+		<div class="dropdown" style="margin: -75px 895px; width: 500px;">
+					<a href="/decider" style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff; text-decoration: none;" class="dropbtn">Sign In</a>
+		</div>
+	</div>
+	{% else %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<div style="position: relative;left: -100px;top: 20px;">
+	<div class="dropdown" style="margin: -100px 900px; ">
+
+		<a href="account/profile"><button style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff;top:10px;" class="dropbtn">Hello, <br>{{firstName}}</button></a>
+		<div  style="z-index: 100;position: relative;top: -10px;transition: 0.5s" class="dropdown-content">
+			<a   100;" href="/cart">Your orders</a>
+			<a   100;" href="/account">Your profile</a>
+			<hr>
+			<a  100;" href="/logout">Sign Out</a>
+		</div>
+	</div>
+	<div class="dropdown" style="margin: -75px 997px; width: 500px;">
+		<a style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #fbfdff; text-decoration: none;" href='http://localhost:8080/contact/index.php' class="dropbtn">Contact Us</a>
+			</div>
+			<div class="dropdown" style="margin: -75px 1125px; width: 500px;">
+				<a href="/about" style="color: rgb(36, 36, 36); border-radius: 5px; background-color: #ffffff; text-decoration: none;" class="dropbtn">About Us</a>
+			</div>
+		</div>
+
+	{% endif %}
+	<div class="navbar-right" style="margin: -70px 100px;" style="background-color: rgb(158, 127, 127);">
+		<a style="color: #777777;  color: white;  font-size: 18px; position: relative;
+		z-index: 100;" href='/cart' id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">{{noOfItems}}</span></a>
+</div>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+.navbar-right {
+    float: right;
+  }
+ .navbar-right a {
+        color: #777777;
+        text-decoration: none;
+  }
+ 
+
+.badge {
+  background-color: #6394F8;
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+	</style>
+
+<section style="position: relative;height: 10vh;">
+<div class="carousel1" data-flickity='{ "wrapAround": true, "autoPlay" : true, "interval" : 5}'>
+	<div class="carousel1-cell"><a href="/productDescription?productId=1"><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2x6kk2574WYB-_PyrBWeBC8fma2CMxB5KKg&usqp=CAU' style="width: 65px;height: 50px ;"></a></div>
+	<div class="carousel1-cell"><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdFMfEv9ORIZ4p9jNBnD_PeoFObdJzxqbOXeHPbgD84azH2hNY4hn_a21hKWeFHU65bwM&usqp=CAU' style="width: 85px;height: 30px ;position: relative;top: 10px;left: -10px"></div>
+	<div class="carousel1-cell"><img src='https://compass-ssl.xboxlive.com/assets/67/1c/671c739e-386a-4df3-9774-30e9e46eb53a.jpg?n=MSXC-StarWarsTitle-HeroAndImageCard-large-l-794x447-16x9-01.jpg' style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src='https://fabrikbrands.com/wp-content/uploads/Stranger-Things-Logo-1.png' style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src='https://www.muraldecal.com/en/img/asfs583-png/folder/products-detalle-png/stickers-breaking-bad-logo.png' style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src='https://s1.ibtimes.com/sites/www.ibtimes.com/files/styles/lg/public/2014/11/21/dc-comics-batman-logo_0.jpg' style="width: 65px;height: 50px ;border-radius: 10px;"></div>      
+	<div class="carousel1-cell"><img src='https://images-eu.ssl-images-amazon.com/images/I/41rtD7ZWszL._SR600%2C315_PIWhiteStrip%2CBottomLeft%2C0%2C35_SCLZZZZZZZ_FMpng_BG255%2C255%2C255.jpg' style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src='https://1000logos.net/wp-content/uploads/2017/02/Harry-Potter-Logo-2001.jpg' style="width: 65px;height: 50px ;border-radius: 10px;"></div>
+	<div class="carousel1-cell"><img src='https://1000logos.net/wp-content/uploads/2020/09/Game-of-Thrones-logo.png' style="width: 65px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src='https://hipfonts.com/wp-content/uploads/2020/07/friends-logo-font.png' style="width: 65px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src='https://img.pngio.com/the-office-gift-ideas-for-anyone-who-loves-the-show-gofergift-the-office-png-1318_598.png' style="width: 95px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src='https://i.gadgets360cdn.com/large/mirzapur-logo-v_1574054420233.jpg' style="width: 105px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src='https://www.seekpng.com/png/detail/337-3372259_brooklyn-nine-nine-logo-brooklyn-99-logo-sticker.png' style="width: 125px;height: 50px ;"></div>
+	<div class="carousel1-cell"><img src='https://i1.wp.com/satyawaadi.com/wp-satya/uploads/2018/07/The-Hidden-Story-Behind-the-Titles-of-the-Episodes-of-Sacred-Games.png?fit=1080%2C720&ssl=1' style="width: 125px;height: 120px ;position: relative;top: -35px;"></div>
+	<div class="carousel1-cell"><img src='https://static.wikia.nocookie.net/logopedia/images/4/4e/Loki_%28TV_series%29_logo.png/revision/latest?cb=20210609082302' style="width: auto;height: 40px ;position: relative;top: 00px;left: -20px;"></div>
+	<div class="carousel1-cell"><img src='data:image/jpeg;base64,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J4krMXxTjXGPRGe3U22+eTZEtaNV32us13OBrGtbEtvy6XzhebGDhjJWtPJ1hArsE/Yknv51T9fSoumLeWWVa66qO2EsL8Ea0foFzbM+z1CHQ511wwBa8RMTgYe4RvC1bNRXARz7D/BPf8qpwvqOmD6o5Xq7q87ZYz1I7q5oN9mc+XBwcMw27jeJi7eOEHOd6kS+L6pxgorCKJzlOTlLqzptLC5jgMyCB2hV9V1FeHEgudMnBjIn6MmqD2wrHRRnWpdSyq+dTzB4IHYdTn06jKrTeILQWFrWwOcY5zrwe6SLmAU8RF2Faj0I23Tte6byyH6X1WdWrPq34LsALgdgCSM3txx8Atfa9RajmPDKoDiDdlkAmDAJFQwJzgKwEUPAjnJdHW3qO1S5Yx6dDErUXGi5g84sLRxuxnxUOOoxlzudm84ujmxm4kxPODCSp4ilKuMnlldWonVnY8ZINo/VqpTr0ql0kNeCSQ1oAuuEiKjiTjEelNJaqPfVqVcSXOJDQ1pAEmDJqNxxU5RQ8BYxlk/q7d+/PMrm1amVXsc1pc0lrgOi2ASCASeeJzjJTqlRPMtYcHXA045G6AcVlr6pQqjFNL1I3aiy1pzecEAbqI4SDUBJJN7mhtJMfKic84CztE6pOoV6dXnGvuk9EMLIBpvE+c68ZcMMNp2KYouKiKeSyeuvnFwcuT7ET0xqma1Y1W1QyW3XNLL0wSQQbwjOOxay26iVHMe1tZglpAHNEYlpAl3OGBJ3ZKfouuiD9BHXXqOxS5Yx6HGmIAHUPQuaIrTIEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAf/Z' style="width: 65px;height: 50px ;"></div>
+</div>
+<br>
+<br>
+<br>
+
+<section style="position: relative;height: 100vh;">
+<div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay" : true, "interval" : 5}'>
+	
+	<div class="carousel-cell"><img src='https://www.redwolf.in/image/cache/catalog/sliders/game-of-thrones-merchandise-2021-1920-1920x450.jpg' style="width:100%;height: 400px ;"></div>
+	<div class="carousel-cell"><img src='https://www.redwolf.in/image/cache/catalog/sliders/loki-merchandise-slider-1920-1920x450.jpg' style="width:100%;height: 400px ;"></div>
+	<div class="carousel-cell"><img src='https://pbs.twimg.com/media/DFXFs1TXYAEbr7f.jpg' style="width:100%;height: 400px ;"></div>       
+	<div class="carousel-cell"><img src='https://www.thegeekgeneration.com/wp-content/uploads/2018/10/thumbnail-marvels-spider-man-game-photo-mode-1280x500.jpg' style="width:100%;height: 400px ;"></div>
+</div>
+</section>
+
+<!--
+<div class="display">
+	<div style="position: relative;text-align: left; top: -150px;">
+		<h2 class="cat" style="position: relative; text-align: center;">What are you looking for?</h2>
+				{% for row in categoryData %}
+				<th><a href="/displayCategory?categoryId={{row[0]}}" 
+				style="text-decoration: none;
+				font-size: 15px;
+				background: red;
+				position: relative;
+				text-align: center;
+				border-radius: 12px;
+				color: white;
+				width: 3px;
+  				height: 1px;
+ 		 		padding: 10px;
+  				border: 1px solid black ;
+				"> &nbsp&nbsp&nbsp&nbsp {{row[1]}} &nbsp&nbsp&nbsp&nbsp</a></th>
+				{% endfor %}	
+	</div>
+	<div>
+		<div> 
+		{% for data in itemData %}
+		<table>
+			<tr id="productName">
+				{% for row in data %}
+				<td>
+					{{row[1]}}
+				</td>
+				{% endfor %}
+			</tr>
+			<tr id="productImage">
+				{% for row in data %}
+				<td>
+					<a href="/productDescription?productId={{row[0]}}">
+						<img src={{ url_for('static', filename='uploads/' + row[4]) }} id="itemImage" />
+					</a>
+				</td>
+				{% endfor %}
+			</tr>
+			<tr id="productPrice">
+				{% for row in data %}
+				<td>
+					${{row[2]}}
+				</td>
+				{% endfor %}
+			</tr>
+		</table>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+-->
+
+
+<p style="font-size: 70px;position: relative;top: -300px;padding-left: 240px;">FEATURED CATEGORIES</p>
+<table style="position: relative;top: -380px;padding-left: 25px;">
+	<tr>
+		<td><a href="displayCategory?categoryId=2"><img src='https://cdn.shopify.com/s/files/1/2578/0910/products/Friends-tv-show-t-shirt-tshirt-top-tee-shirt-women-female-femme-ulzzang-t-shirt-Harajuku.jpg_640x640_b5f48178-3af2-4941-9b62-c52c4cc790da_1024x.jpg?v=1575840217' style="width: 400px;"></td>
+		<td><a href="displayCategory?categoryId=1"><img src='https://cdn.shopify.com/s/files/1/0031/3769/9955/products/white_hoodie_grande.jpg' style="width: 400px;"></td>
+		<td><a href="displayCategory?categoryId=3"><img src='https://the-wizards-shop.com/1596-thickbox_default/harry-potter-accessories-advent-calendar.jpg' style="width: 400px; height:400px;"></td>	
+	</tr>
+	<tr>
+		<td><a href="displayCategory?categoryId=4"><img src='https://static.turbosquid.com/Preview/2018/12/14__10_46_20/Batman_Mask_600_0001.jpg5184A72F-A9D6-4EC0-A4D1-500BDC4C0F5BLarge.jpg' style="width: 400px;"></td>
+		<td><a href="displayCategory?categoryId=5"><img src='https://m.media-amazon.com/images/I/511K5GpC4jL._SL1000_.jpg' style="width: 400px;"></td>
+		<td><a href="displayCategory?categoryId=6"><img src='https://m.media-amazon.com/images/I/51NZ4quEnnL.jpg' style="width: 400px;"></td>	
+	</tr>
+	<tr>
+		<td><a href="displayCategory?categoryId=7"><img src='https://res.cloudinary.com/teepublic/image/private/s--Y8dh2n4b--/c_crop,x_10,y_10/c_fit,h_806/c_crop,g_north_west,h_1007,w_1007,x_-201,y_-101/l_upload:v1507037313:production:blanks:n2pk899a8qrzxtz4tyvn/fl_layer_apply,g_north_west,x_-328,y_-232/b_rgb:fff3bf/c_limit,f_jpg,h_630,q_90,w_630/v1505703925/production/designs/1909505_1.jpg' style="width: 400px;"></td>
+		<td><a href="displayCategory?categoryId=8"><img src='https://m.media-amazon.com/images/I/71dp3DIHkcL._SL1000_.jpg' style="width: 400px;"></td>
+		<td><a href="displayCategory?categoryId=9"><img src='https://ih1.redbubble.net/image.1181880344.7927/ur,mask_flatlay_front,product,600x600.u1.jpg' style="width: 400px;"></td>	
+	</tr>
+</table>
+
+<div class="display" style="top: -200px;position: relative;width: 200px;padding: 10px;">
+	<div>
+		<div> 
+		{% for data in itemData %}
+		<table>
+			<tr id="productName">
+				{% for row in data %}
+				<td>
+					{{row[1]}}
+				</td>
+				{% endfor %}
+			</tr>
+			<tr id="productImage">
+				{% for row in data %}
+				<td>
+					<a href="/productDescription?productId={{row[0]}}">
+						<img src={{ url_for('static', filename='uploads/' + row[4]) }} id="itemImage" />
+					</a>
+				</td>
+				{% endfor %}
+			</tr>
+			<tr id="productPrice">
+				{% for row in data %}
+				<td>
+					${{row[2]}}
+				</td>
+				{% endfor %}
+			</tr>
+		</table>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+
+<!-- partners -->
+ <div style="position: relative;top: -100px;">
+ <h2 style="text-align: center; font-family: Arial, Helvetica, sans-serif">PARTNERS</h2>
+  <div class="slider">
+	<div class="slide-track">
+		<div class="slide">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHgL4e5gbiaITRWnvYdoFuUj6Ks7PVt1jjXCURn40ZH5MGe7fHmwrHhfh_0JuhDqpku_0&usqp=CAU" height="100" width="250" alt=""/>
+		</div>
+		<div class="slide">
+			<img src="https://png.pngitem.com/pimgs/s/173-1738304_shopify-hd-png-download.png" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://www.vippng.com/png/detail/210-2106488_alibaba-customer-care-number-alibaba-group-logo-png.png" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSruzh3ZNiJMczNY0kJNMoqk6bRx4AYoP5gFn6UqASJyTURNYitd646QqtKSK7tyHvbOTg&usqp=CAU" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNiRS8lOihakg4EnySlZyJFwvipPolyqTRqaPERo2tRNPuL8dRFEcSzKqInaezVzP-8D0&usqp=CAU" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+		</div>
+    <div class="slide">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHgL4e5gbiaITRWnvYdoFuUj6Ks7PVt1jjXCURn40ZH5MGe7fHmwrHhfh_0JuhDqpku_0&usqp=CAU" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://png.pngitem.com/pimgs/s/173-1738304_shopify-hd-png-download.png" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://www.vippng.com/png/detail/210-2106488_alibaba-customer-care-number-alibaba-group-logo-png.png" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSruzh3ZNiJMczNY0kJNMoqk6bRx4AYoP5gFn6UqASJyTURNYitd646QqtKSK7tyHvbOTg&usqp=CAU" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNiRS8lOihakg4EnySlZyJFwvipPolyqTRqaPERo2tRNPuL8dRFEcSzKqInaezVzP-8D0&usqp=CAU" height="100" width="250" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+		</div>
+	</div>
+</div>
+</div>
+<style>	
+@-webkit-keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+.slider {
+  background: white;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
+}
+.slider::before, .slider::after {
+  background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider .slide-track {
+  -webkit-animation: scroll 40s linear infinite;
+          animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
+.slider .slide {
+  height: 100px;
+  width: 250px;
+}
+</style>
+
+
+<!-- footer-->
+
+<footer>
+	<div class="content">
+		<div class="top">
+			<div class="logo-details">
+				<span class="logo_name">SHOPTOONS</span>
+			</div>
+			<div class="media-icons">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-instagram"></i></a>
+				<a href="#"><i class="fa fa-linkedin"></i></a>
+				<a href="#"><i class="fa fa-youtube"></i></a>
+			</div>
+		</div>
+		<div class="link-boxes">
+			<ul class="box">
+				<li class="link_name">Links</li>
+				<li><a href="#">Home</a></li>
+				<li><a href="http://localhost/contact/index.php">Contact</a></li>
+				<li><a href="/aboutus">About Us</a></li>
+				<li><a href="#">Get Started</a></li>
+			
+			</ul>
+			<ul class="box">
+        <li class="link_name">Categories</li>
+        {% for row in categoryData %}
+        <li><a style="color: white; text-decoration: none;" href="/displayCategory?categoryId={{row[0]}}">{{row[1]}}</a></li>
+        {% endfor %}
+      </ul>
+	<ul class="box">
+				<li class="link_name">Other</li>
+				<li><a href="#">SEO</a></li>
+				<li><a href="#">Payment Details</a></li>
+				<li><a href="#">Return Details</a></li>
+				<li><a href="#">Social Media</a></li>
+			
+			</ul>
+			<ul class="box">
+				<li class="link_name">Contact</li>
+				<li><a href="#">+91 8879887262</a></li>
+				<li><a href="#">+91 8879887262</a></li>
+				<li><a href="#">contact@shoptoons.com</a></li>
+				
+			
+			</ul>
+			
+	
+	
+	
+		</div>
+	</div>
+	    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2021 <a href="#">Shoptoons.</a></span>
+        <span class="policy_terms">
+          <a href="#">Privacy policy</a>
+          
+        </span>
+      </div>
+    </div>
+</footer>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+footer{
+  background: #000;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+footer::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100px;
+  height: 1px;
+  width: 100%;
+  background: #000;
+}
+footer .content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 30px 40px 40px 40px;
+}
+footer .content .top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.content .top .logo-details{
+  color: #fff;
+  font-size: 30px;
+}
+.content .top .media-icons{
+  display: flex;
+}
+.content .top .media-icons a{
+  height: 40px;
+  width: 40px;
+  margin: 0 8px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 17px;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.top .media-icons a:nth-child(1){
+  background: #4267B2;
+}
+.top .media-icons a:nth-child(1):hover{
+  color: #4267B2;
+  background: #fff;
+}
+.top .media-icons a:nth-child(2){
+  background: #1DA1F2;
+}
+.top .media-icons a:nth-child(2):hover{
+  color: #1DA1F2;
+  background: #fff;
+}
+.top .media-icons a:nth-child(3){
+  background: #E1306C;
+}
+.top .media-icons a:nth-child(3):hover{
+  color: #E1306C;
+  background: #fff;
+}
+.top .media-icons a:nth-child(4){
+  background: #0077B5;
+}
+.top .media-icons a:nth-child(4):hover{
+  color: #0077B5;
+  background: #fff;
+}
+.top .media-icons a:nth-child(5){
+  background: #FF0000;
+}
+.top .media-icons a:nth-child(5):hover{
+  color: #FF0000;
+  background: #fff;
+}
+footer .content .link-boxes{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+footer .content .link-boxes .box{
+  width: calc(100% / 5 - 10px);
+}
+.content .link-boxes .box .link_name{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  position: relative;
+}
+.link-boxes .box .link_name::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 35px;
+  background: #fff;
+}
+.content .link-boxes .box li{
+  margin: 6px 0;
+  list-style: none;
+}
+.content .link-boxes .box li a{
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.4s ease
+}
+.content .link-boxes .box li a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.content .link-boxes .input-box{
+  margin-right: 55px;
+}
+.link-boxes .input-box input{
+  height: 40px;
+  width: calc(100% + 55px);
+  outline: none;
+  border: 2px solid #AFAFB6;
+  background: #140B5C;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  color: #fff;
+  margin-top: 5px;
+}
+.link-boxes .input-box input::placeholder{
+  color: #AFAFB6;
+  font-size: 16px;
+}
+.link-boxes .input-box input[type="button"]{
+  background: #fff;
+  color: #140B5C;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 4px 0;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.input-box input[type="button"]:hover{
+  opacity: 1;
+}
+footer .bottom-details{
+  width: 100%;
+background: #2c303a;
+}
+footer .bottom-details .bottom_text{
+  max-width: 1250px;
+  margin: auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-details .bottom_text span,
+.bottom-details .bottom_text a{
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+}
+.bottom-details .bottom_text a:hover{
+  opacity: 1;
+  text-decoration: underline;
+}
+.bottom-details .bottom_text a{
+  margin-right: 10px;
+}
+@media (max-width: 900px) {
+  footer .content .link-boxes{
+    flex-wrap: wrap;
+  }
+  footer .content .link-boxes .input-box{
+    width: 40%;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 700px){
+  footer{
+    position: relative;
+  }
+  .content .top .logo-details{
+    font-size: 26px;
+  }
+  .content .top .media-icons a{
+    height: 35px;
+    width: 35px;
+    font-size: 14px;
+    line-height: 35px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 3 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 60%;
+  }
+  .bottom-details .bottom_text span,
+  .bottom-details .bottom_text a{
+    font-size: 12px;
+  }
+}
+@media (max-width: 520px){
+  footer::before{
+    top: 145px;
+  }
+  footer .content .top{
+    flex-direction: column;
+  }
+  .content .top .media-icons{
+    margin-top: 16px;
+  }
+  footer .content .link-boxes .box{
+    width: calc(100% / 2 - 10px);
+  }
+  footer .content .link-boxes .input-box{
+    width: 100%;
+  }
+}
+.logo_name{
+  color: white;
+}
+
+</style>
+</div>
+
+</body>
+</html>
+
+
+

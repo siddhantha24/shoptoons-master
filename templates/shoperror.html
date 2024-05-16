@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>SHOPTOONS</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    
+    <link rel="apple-touch-icon" href={{ url_for('static', filename='images/apple-touch-icon.png') }}>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/boot.css') }} />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }} />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/responsive.css') }} />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href={{ url_for('static', filename='css/custom.css') }} />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="our-link">
+                        <ul>
+                            <li><a href="loginForm">
+                    {% if not loggedIn %}
+                        My account
+                    {% else %}
+                        <a href="account/profile">Hello &nbsp {{firstName}} &nbsp </a>
+                        </div>
+                    {% endif %}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <a class="navbar-brand" href="anime"><img src=" class="logo" alt="" style="width:350px;background-color: black;padding-right: 5px;border-radius: 20px;"></a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="anime">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="aboutus">About Us</a></li>
+                        
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search" style="position: relative;left: -30px;top: -4px;"><a href="#"><i class="fa fa-search"></i></a></li>
+                        
+                        <a style="color: #777777;  color: black;  font-size: 18px; position: relative;
+                        z-index: 100;top:22px;" href='/cart' id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">{{noOfItems}}</span></a>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+
+    <!-- Start Top Search -->
+    <div class="top-search" style="position: relative;z-index: 1;">
+        <div class="container">
+            <div class="input-group">
+                <form action="/search" method="POST">
+                <a href="search" type="submit" value="search"><span style="position: relative;top: 40px;left: -50px;;" class="input-group-addon"><i class="fa fa-search"></i></span></a>
+                <input type="text" class="form-control" placeholder="Search" name="sname">
+                <span style="position: relative;left: 1100px;top: -50px;" class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+
+
+    <!-- Start All Title Box -->
+   
+        <img style="width: 100%;height: 650px;position: relative;top: -200px;z-index: -1;" src="https://static0.cbrimages.com/wordpress/wp-content/uploads/2020/02/Luffy-Confused-Face-Cropped.jpg?q=50&fit=crop&w=960&h=500&dpr=1.5" alt="">
+   
+    <!-- End All Title Box -->
+
+    <!-- Start Shop Page -->
+    
+    <div>
+        <h1 style="position: relative;font-size: 50px;padding: 100px;top: -100px;">THE PRODUCT YOU SEARCHED <br> EITHER IT DOESNT EXIST OR TRY CHECKING SPELLING :( </h1>
+    </div>
+    <!-- End Shop Page -->
+
+    
+        <!-- Start Footer  -->
+        <footer>
+            <div class="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-widget">
+                                <h4>About ThewayShop</h4>
+                                <p>Shoptoons is a online webseries, Anime merchandise. Here you can get your own customized stuff, We create stunning designs and print them on all sorts of equally stunning products- from t-shirts to phone covers to backpacks to boxers to mugs to socks to badges to pins to hoodies and many, many more!
+                                    </p>
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link">
+                                <h4>Information</h4>
+                                <ul>
+                                    <li><a href="http://localhost/contact/index.php">Contact Us</a></li>
+                                    <li><a href="/aboutus">About Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Contact Us</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: Sector 15, Seawoods,<br>Navi Mumbai<br> Pincode - 400706 </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+91-888 705 1770</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:shoptoons@gmail.com">shoptoons@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer  -->
+    
+   <!-- Start copyright  -->
+   <div class="footer-copyright">
+    <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#">Shoptoons</a> Design By :
+        <a href="https://github.com/Jotaro2401/shoptoons">ATHARVA, ANTARA, JANVI & SIDDHANTA</a></p>
+</div>
+<!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+     <!-- ALL JS FILES -->
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery-3.2.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+    <!-- ALL PLUGINS -->
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.superslides.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/bootstrap-select.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/inewsticker.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/bootsnav.js.') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/images-loded.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/isotope.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/baguetteBox.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/form-validator.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/contact-form-script.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'js/custom.js') }}"></script>
+</body>
+
+</html>
